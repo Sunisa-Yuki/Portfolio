@@ -3,32 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact</title>
+  <title>Contact | Yuki Zhou</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="../global.js" type="module"></script>
 </head>
 <body>
-  <nav>
-    <a href="../">Home</a>
-    <a href="../projects/">Projects</a>
-    <a href="../resume/">Resume</a>
-    <a href="../contact/" class="current">Contact</a>
-    <a href="https://github.com/Sunisa-Yuki" target="_blank">GitHub</a>
-  </nav>
 
   <h1>Contact</h1>
 
-  <form action="mailto:ssaeli@ucsd.edu" method="POST" enctype="text/plain">
-    <label>
-      Email
-      <input type="email" name="email" value="test@example.com">
-    </label>
+  <form action="mailto:ssaeli@ucsd.edu">
     <label>
       Subject
-      <input name="subject" value="Hello from your site">
+      <input name="subject" placeholder="Hello from your site">
     </label>
     <label>
       Message
-      <textarea name="body">This is a test message.</textarea>
+      <textarea name="body" placeholder="Write your message here"></textarea>
     </label>
     <button>Send</button>
   </form>
