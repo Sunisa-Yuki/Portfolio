@@ -5,9 +5,7 @@ function $$(selector, context = document) {
 }
 
 // ---------- Navigation ----------
-const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "/"
-  : "/portfolio/";   // change to your GitHub repo name
+const BASE_PATH = new URL('./', import.meta.url).pathname;
 
 let pages = [
   { url: '', title: 'Home' },
