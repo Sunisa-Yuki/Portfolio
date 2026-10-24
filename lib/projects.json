@@ -1,0 +1,74 @@
+[
+    {
+        "title": "Movie Recommendation App",
+        "year": "2025",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Recommends movies using collaborative filtering on a public ratings dataset."
+    },
+    {
+        "title": "Weather Trends Dashboard",
+        "year": "2025",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Visualizes 10 years of city temperature data with interactive charts."
+    },
+    {
+        "title": "Lorem ipsum dolor sit",
+        "year": "2025",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Amet consectetur adipisicing elit",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Quis voluptatum dolor",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Sit amet elit",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Dolor sit amet consectetur",
+        "year": "2023",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Lorem ipsum",
+        "year": "2023",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Adipisicing elit quis voluptatum",
+        "year": "2023",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Consectetur adipisicing",
+        "year": "2022",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Voluptatum lorem ipsum dolor",
+        "year": "2022",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    },
+    {
+        "title": "Elit dolor sit",
+        "year": "2022",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum."
+    }
+]
