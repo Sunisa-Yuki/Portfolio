@@ -73,7 +73,7 @@ function update() {
   renderPieChart(searched);
   const visible = filterByYear(searched);
   renderProjects(visible, projectsContainer, 'h2');
-  title.textContent = `${visible.length} Projects`;
+  title.textContent = `${visible.length} Project${visible.length === 1 ? '' : 's'}`;
 }
 
 update();
