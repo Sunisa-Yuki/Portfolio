@@ -1,5 +1,13 @@
 [
     {
+        "title": "Bikewatching",
+        "year": "2026",
+        "image": "https://sunisa-yuki.github.io/Portfolio/images/bikewatching.png",
+        "description": "Interactive map of Bluebikes traffic in Boston and Cambridge, built with Mapbox and D3. Filter by time of day to see where riders arrive and depart.",
+        "url": "https://sunisa-yuki.github.io/bikewatching/"
+    },
+
+    {
         "title": "Movie Recommendation App",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
