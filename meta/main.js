@@ -487,6 +487,7 @@ scroller
   .setup({
     container: '#scrolly-1',
     step: '#scrolly-1 .step',
-    offset: 0.75, // trigger a bit lower, so the first card lights up on load
+    // a card becomes active when it reaches just under the pinned top part
+    offset: `${metaTop.offsetHeight + 120}px`,
   })
   .onStepEnter(onStepEnter);
