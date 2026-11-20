@@ -375,7 +375,7 @@ circle {
   border-left: 4px solid color-mix(in oklch, var(--color-accent), canvas 60%);
   border-radius: 0.5em;
   background: color-mix(in oklch, CanvasText 5%, canvas);
-  opacity: 0.35;
+  opacity: 0.55;
   transition: opacity 300ms, transform 300ms, border-color 300ms;
 }
 

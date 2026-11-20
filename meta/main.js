@@ -455,6 +455,9 @@ d3.select('#scatter-story')
     `;
   });
 
+// First card is active from the start, so it never looks faded on load
+d3.select('#scatter-story .step').classed('is-active', true);
+
 // ---------- Lab 8 Step 3.3: update the chart as you scroll ----------
 function onStepEnter(response) {
   const commit = response.element.__data__;
