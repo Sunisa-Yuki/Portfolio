@@ -478,5 +478,6 @@ scroller
   .setup({
     container: '#scrolly-1',
     step: '#scrolly-1 .step',
+    offset: 0.75, // trigger a bit lower, so the first card lights up on load
   })
   .onStepEnter(onStepEnter);
