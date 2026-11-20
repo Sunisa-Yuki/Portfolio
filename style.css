@@ -266,3 +266,91 @@ dl.info[hidden]:not(:hover, :focus-within) {
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
 }
+
+/* ---------- Lab 8: Animation & Scrollytelling ---------- */
+
+/* Step 1.1: slider row */
+.slider-row label {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: 0.5em;
+}
+.slider-row input[type="range"] { flex: 1; }
+.slider-row time { margin-left: auto; white-space: nowrap; }
+
+/* Step 1.4: new circles grow in from r = 0 */
+circle {
+  @starting-style {
+    r: 0;
+  }
+}
+
+/* Step 2: unit visualization */
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  dt {
+    grid-column: 1;
+  }
+
+  dt small {
+    display: block;
+    font-size: 0.75em;
+    opacity: 0.6;
+  }
+
+  dd {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: start;
+    gap: 0.15em;
+    padding-top: 0.6em;
+    margin-left: 0;
+  }
+}
+
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color);
+  border-radius: 50%;
+}
+
+/* Step 3.1: two-column scrolly layout */
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+
+  > * {
+    flex: 1;
+  }
+}
+
+#scatter-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 50vh;
+}
+
+/* Step 3.2: space out the story steps */
+#scatter-story .step {
+  padding-bottom: 60vh;
+}
