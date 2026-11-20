@@ -370,6 +370,12 @@ function updateFileDisplay(filteredCommits) {
 }
 
 // ---------- Run ----------
+// Tell CSS how tall the pinned top part is, so the chart sits under it
+const metaTop = document.getElementById('meta-top');
+new ResizeObserver(() => {
+  document.documentElement.style.setProperty('--top-h', `${metaTop.offsetHeight}px`);
+}).observe(metaTop);
+
 const data = await loadData();
 const commits = processCommits(data);
 

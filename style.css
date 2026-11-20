@@ -341,15 +341,15 @@ circle {
 #scatter-story {
   position: relative;
   flex: 1;
-  padding-block: 1rem 20vh;
+  padding-block: 1rem 2rem;
 }
 
 #scatter-plot {
   position: sticky;
-  top: 0;
+  top: var(--top-h, 0px); /* sit right under the pinned top part */
   left: 0;
   bottom: auto;
-  height: 100vh;
+  height: calc(100vh - var(--top-h, 0px));
   flex: 1.5;
   display: flex;
   flex-direction: column;
@@ -370,7 +370,7 @@ circle {
 
 /* Story cards */
 #scatter-story .step {
-  margin-bottom: 20vh;
+  margin-bottom: 6vh;
   padding: 1.25em 1.5em;
   border-left: 4px solid color-mix(in oklch, var(--color-accent), canvas 60%);
   border-radius: 0.5em;
@@ -425,3 +425,19 @@ circle {
     transform: scale(0);
   }
 }
+
+/* No extra space after the last card */
+#scatter-story .step:last-child { margin-bottom: 0; }
+
+/* Pinned top part: title, slider, stats stay while the rest scrolls */
+#meta-top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: canvas;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid oklch(50% 10% 200 / 25%);
+}
+#meta-top h1 { margin: 0.1em 0 0.2em; }
+#meta-top > p { margin: 0 0 0.5em; }
+#meta-top .stats { margin-block: 0.75em 0; }
