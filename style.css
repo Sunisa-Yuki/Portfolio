@@ -341,7 +341,7 @@ circle {
 #scatter-story {
   position: relative;
   flex: 1;
-  padding-block: 1rem 40vh;
+  padding-block: 1rem 20vh;
 }
 
 #scatter-plot {
@@ -370,7 +370,7 @@ circle {
 
 /* Story cards */
 #scatter-story .step {
-  margin-bottom: 45vh;
+  margin-bottom: 20vh;
   padding: 1.25em 1.5em;
   border-left: 4px solid color-mix(in oklch, var(--color-accent), canvas 60%);
   border-radius: 0.5em;
