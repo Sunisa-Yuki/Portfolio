@@ -403,45 +403,68 @@ function onTimeSliderChange() {
   commitProgress = Number(slider.value);
   commitMaxTime = timeScale.invert(commitProgress);
   updateAll();
+  d3.selectAll('#chart circle').classed('current', false);
 }
 
 renderScatterPlot(data, commits);
 slider.addEventListener('input', onTimeSliderChange);
 onTimeSliderChange(); // set the time + stats on page load
 
-// ---------- Lab 8 Step 3.2: story text, one step per commit ----------
+// ---------- Lab 8 Step 3.2: story cards, one per commit ----------
 d3.select('#scatter-story')
   .selectAll('.step')
   .data(commits)
   .join('div')
   .attr('class', 'step')
-  .html(
-    (d, i) => `
-      On ${d.datetime.toLocaleString('en', {
-        dateStyle: 'full',
-        timeStyle: 'short',
-      })},
-      I made <a href="${d.url}" target="_blank">${
-        i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
-      }</a>.
-      I edited ${d.totalLines} lines across ${
-        d3.rollups(
-          d.lines,
-          (D) => D.length,
-          (d) => d.file,
-        ).length
-      } files.
-      Then I looked over all I had made, and I saw that it was very good.
-    `,
-  );
+  .html((d, i) => {
+    // lines changed per file, biggest first
+    const perFile = d3
+      .rollups(
+        d.lines,
+        (D) => ({ count: D.length, type: D[0].type }),
+        (l) => l.file,
+      )
+      .sort((a, b) => b[1].count - a[1].count);
+
+    const chips = perFile
+      .map(
+        ([file, { count, type }]) =>
+          `<span class="chip" style="--color: ${colors(type)}">${file} · ${count}</span>`,
+      )
+      .join('');
+
+    return `
+      <p class="step-date">
+        Commit ${i + 1} of ${commits.length} ·
+        ${d.datetime.toLocaleString('en', { dateStyle: 'medium', timeStyle: 'short' })}
+      </p>
+      <p class="step-lines">+${d.totalLines} lines</p>
+      <p class="step-text">
+        I made <a href="${d.url}" target="_blank">${
+          i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
+        }</a>, touching ${perFile.length} file${perFile.length > 1 ? 's' : ''}.
+        Then I looked over all I had made, and I saw that it was very good.
+      </p>
+      <div class="chips">${chips}</div>
+    `;
+  });
 
 // ---------- Lab 8 Step 3.3: update the chart as you scroll ----------
 function onStepEnter(response) {
-  commitMaxTime = response.element.__data__.datetime;
+  const commit = response.element.__data__;
+
+  // light up the active card
+  d3.selectAll('#scatter-story .step').classed('is-active', false);
+  d3.select(response.element).classed('is-active', true);
+
+  commitMaxTime = commit.datetime;
   // keep the slider in sync with the story
   commitProgress = timeScale(commitMaxTime);
   slider.value = commitProgress;
   updateAll();
+
+  // ring the current commit on the plot
+  d3.selectAll('#chart circle').classed('current', (d) => d.id === commit.id);
 }
 
 const scroller = scrollama();

@@ -331,7 +331,7 @@ circle {
 #scrolly-1 {
   position: relative;
   display: flex;
-  gap: 1rem;
+  gap: 2.5rem;
 
   > * {
     flex: 1;
@@ -340,6 +340,8 @@ circle {
 
 #scatter-story {
   position: relative;
+  flex: 1;
+  padding-block: 30vh 40vh;
 }
 
 #scatter-plot {
@@ -347,10 +349,77 @@ circle {
   top: 0;
   left: 0;
   bottom: auto;
-  height: 50vh;
+  height: 100vh;
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Step 3.2: space out the story steps */
+/* Bigger, readable axis labels (chart is scaled down to fit) */
+#chart text { font-size: 18px; }
+
+/* Current commit in the story gets a ring on the plot */
+#chart circle.current {
+  stroke: CanvasText;
+  stroke-width: 3;
+  fill-opacity: 1 !important;
+}
+
+/* Story cards */
 #scatter-story .step {
-  padding-bottom: 60vh;
+  margin-bottom: 45vh;
+  padding: 1.25em 1.5em;
+  border-left: 4px solid color-mix(in oklch, var(--color-accent), canvas 60%);
+  border-radius: 0.5em;
+  background: color-mix(in oklch, CanvasText 5%, canvas);
+  opacity: 0.35;
+  transition: opacity 300ms, transform 300ms, border-color 300ms;
+}
+
+#scatter-story .step.is-active {
+  opacity: 1;
+  transform: translateX(6px);
+  border-left-color: var(--color-accent);
+  box-shadow: 0 6px 20px oklch(0% 0 0 / 15%);
+}
+
+.step-date {
+  margin: 0;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.step-lines {
+  margin: 0.2em 0 0.4em;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.step-text { margin: 0 0 0.75em; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+
+.chip {
+  font-family: ui-monospace, monospace;
+  font-size: 0.75em;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--color), transparent 75%);
+  border: 1px solid var(--color);
+}
+
+/* File dots pop in when they first appear */
+.loc {
+  transition: transform 300ms;
+  @starting-style {
+    transform: scale(0);
+  }
 }
