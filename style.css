@@ -341,7 +341,7 @@ circle {
 #scatter-story {
   position: relative;
   flex: 1;
-  padding-block: 30vh 40vh;
+  padding-block: 1rem 40vh;
 }
 
 #scatter-plot {
@@ -353,7 +353,9 @@ circle {
   flex: 1.5;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
+  box-sizing: border-box;
 }
 
 /* Bigger, readable axis labels (chart is scaled down to fit) */

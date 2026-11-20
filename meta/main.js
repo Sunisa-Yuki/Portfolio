@@ -289,7 +289,13 @@ function dotColor(d) {
 function updateScatterPlot(data, commits) {
   const svg = d3.select('#chart').select('svg');
 
-  xScale = xScale.domain(d3.extent(commits, (d) => d.datetime));
+  let [minDate, maxDate] = d3.extent(commits, (d) => d.datetime);
+  // only one commit shown: widen the range so the axis still makes sense
+  if (+minDate === +maxDate) {
+    minDate = d3.timeDay.offset(minDate, -1);
+    maxDate = d3.timeDay.offset(maxDate, 1);
+  }
+  xScale = xScale.domain([minDate, maxDate]);
 
   const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
   const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
