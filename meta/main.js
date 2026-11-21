@@ -147,7 +147,7 @@ function renderScatterPlot(data, commits) {
 
   // Step 4: dot size = lines edited (sqrt so AREA matches lines)
   const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
-  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([4, 30]); // min 4 so 1-line commits are still visible
 
   // Step 2.3: gridlines go first so they sit behind everything
   svg
@@ -298,7 +298,7 @@ function updateScatterPlot(data, commits) {
   xScale = xScale.domain([minDate, maxDate]);
 
   const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
-  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([4, 30]); // min 4 so 1-line commits are still visible
 
   // Clear the old x-axis and draw a new one
   const xAxis = d3.axisBottom(xScale);
@@ -376,6 +376,13 @@ new ResizeObserver(() => {
   document.documentElement.style.setProperty('--top-h', `${metaTop.offsetHeight}px`);
 }).observe(metaTop);
 
+// Shrink the top part once it is pinned, so it takes less room
+function updateStuck() {
+  metaTop.classList.toggle('is-stuck', metaTop.getBoundingClientRect().top <= 0 && window.scrollY > 0);
+}
+window.addEventListener('scroll', updateStuck, { passive: true });
+updateStuck();
+
 const data = await loadData();
 const commits = processCommits(data);
 
@@ -423,6 +430,21 @@ slider.addEventListener('input', onTimeSliderChange);
 onTimeSliderChange(); // set the time + stats on page load
 
 // ---------- Lab 8 Step 3.2: story cards, one per commit ----------
+// One line per commit, written from my commit messages (first 7 chars of the id)
+const storyLines = {
+  da0728d: 'Lab 1: I built the first version of my site.',
+  ec536c3: 'Lab 2: I styled the whole site with CSS.',
+  c3124ca: 'My dark mode CSS got lost, so I brought it back.',
+  '65b73d0': 'I restored my Projects page.',
+  '9870778': 'Lab 3: I added JavaScript for the navigation and the theme switcher.',
+  afa3810: 'A quick fix for my script paths.',
+  '160497f': 'Lab 4: my projects now load from JSON, and I added my GitHub stats.',
+  '782b333': 'Lab 5: I added a D3 pie chart with a legend, search, and a year filter.',
+  '890a6ab': 'A tiny grammar fix for the project count.',
+  '91825af': 'Lab 6: I built this Meta page, with stats, a scatterplot, tooltips, and brushing.',
+  '189564b': 'I added my Lab 7 Bikewatching map to my projects.',
+  '14a0251': 'Lab 8: I added the slider, the file dots, and this scrolling story.',
+};
 d3.select('#scatter-story')
   .selectAll('.step')
   .data(commits)
@@ -452,10 +474,8 @@ d3.select('#scatter-story')
       </p>
       <p class="step-lines">+${d.totalLines} lines</p>
       <p class="step-text">
-        I made <a href="${d.url}" target="_blank">${
-          i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
-        }</a>, touching ${perFile.length} file${perFile.length > 1 ? 's' : ''}.
-        Then I looked over all I had made, and I saw that it was very good.
+        ${storyLines[d.id.slice(0, 7)] ?? 'I made another commit.'}
+        <a href="${d.url}" target="_blank">See the commit ↗</a>
       </p>
       <div class="chips">${chips}</div>
     `;

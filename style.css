@@ -441,3 +441,15 @@ circle {
 #meta-top h1 { margin: 0.1em 0 0.2em; }
 #meta-top > p { margin: 0 0 0.5em; }
 #meta-top .stats { margin-block: 0.75em 0; }
+
+/* While pinned: smaller title and stats */
+#meta-top h1,
+#meta-top > p,
+#meta-top .stats dd {
+  transition: font-size 200ms, margin 200ms, opacity 200ms;
+}
+#meta-top.is-stuck h1 { font-size: 200%; margin: 0.2em 0 0.1em; }
+#meta-top.is-stuck > p { display: none; }
+#meta-top.is-stuck .stats dd { font-size: 1.2em; }
+
+.step-text a { white-space: nowrap; font-size: 0.9em; }
